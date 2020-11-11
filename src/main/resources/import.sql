@@ -1,0 +1,1 @@
+INSERT INTO user_tb (user_id, user_name, password, email, role)  VALUES (1, 'admin', 'admin', '957149934@qq.com', 0);
