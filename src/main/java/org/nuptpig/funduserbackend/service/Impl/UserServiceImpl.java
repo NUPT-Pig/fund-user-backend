@@ -23,4 +23,9 @@ public class UserServiceImpl implements UserService {
         List<Users> users = userRepository.findAll();
         return MapperHelper.SourcesToDestinations(users, UserListResponse.class);
     }
+
+    @Override
+    public Users getUserByUserName(String userName) {
+        return userRepository.getUsersByUserName(userName);
+    }
 }
