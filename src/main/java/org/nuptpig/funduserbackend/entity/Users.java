@@ -18,6 +18,8 @@ public class Users {
 
     private String password;
 
+    private String salt;
+
     private String email;
 
     private int role=Role.VIEWER.getRoleLevel();

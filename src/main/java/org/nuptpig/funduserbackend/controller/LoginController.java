@@ -2,10 +2,13 @@ package org.nuptpig.funduserbackend.controller;
 
 import org.nuptpig.funduserbackend.entity.Users;
 import org.nuptpig.funduserbackend.service.UserService;
+import org.nuptpig.funduserbackend.util.HashHelper;
 import org.nuptpig.funduserbackend.util.CommonResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.security.NoSuchAlgorithmException;
 
 @RestController
 @RequestMapping(path = "/login")
@@ -18,9 +21,10 @@ public class LoginController {
 
     @PostMapping()
     public ResponseEntity Login(@RequestParam("user_name") String userName,
-                                @RequestParam("password") String password){
+                                @RequestParam("password") String password) {
         Users loginUser = userService.getUserByUserName(userName);
-        if (loginUser.getPassword().equals(password)){
+        String checkPassword = HashHelper.sha512Hash(password, loginUser.getSalt());
+        if (loginUser.getPassword().equals(checkPassword)){
             return CommonResponse.ok(HttpStatus.OK);
         }
         return CommonResponse.fail(HttpStatus.UNAUTHORIZED);
