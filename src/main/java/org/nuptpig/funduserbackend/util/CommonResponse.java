@@ -24,6 +24,10 @@ public class CommonResponse {
         return ResponseEntity.status(httpStatus).body(CommonResult.fail(null));
     }
 
+    public static <T> ResponseEntity<CommonResult<T>> fail(HttpStatus httpStatus, ResultCode code){
+        return ResponseEntity.status(httpStatus).body(CommonResult.fail(null, code));
+    }
+
     public static <T> ResponseEntity<CommonResult<T>> fail(HttpStatus httpStatus, ResultCode code, T data){
         return ResponseEntity.status(httpStatus).body(CommonResult.fail(data, code));
     }

@@ -10,4 +10,5 @@ public interface UserService {
     List<UserListResponse> getUsers();
     Users getUserByUserName(String userName);
     Users addUser(UserCreateRequest userCreateRequest);
+    Boolean userExists(String userName);
 }

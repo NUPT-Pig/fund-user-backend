@@ -24,8 +24,11 @@ public class UserController {
         return CommonResponse.ok(userService.getUsers());
     }
 
-    @PostMapping(path = "")
+    @PostMapping(path = "/register")
     public ResponseEntity addUsers(@RequestBody UserCreateRequest userCreateRequest){
+        if (userService.userExists(userCreateRequest.getUserName())) {
+            return CommonResponse.fail(HttpStatus.CONFLICT, ResultCode.USEREXISTS);
+        }
         userService.addUser(userCreateRequest);
         return CommonResponse.ok(HttpStatus.CREATED);
     }

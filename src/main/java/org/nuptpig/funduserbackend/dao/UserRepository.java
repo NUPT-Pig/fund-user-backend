@@ -8,4 +8,5 @@ import java.util.List;
 public interface UserRepository extends PagingAndSortingRepository<Users, Long> {
     List<Users> findAll();
     Users getUsersByUserName(String userName);
+    Boolean existsUsersByUserName(String userName);
 }
