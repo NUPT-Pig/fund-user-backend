@@ -1,0 +1,1 @@
+INSERT INTO user_tb (user_id, user_name, salt, password, email, role)  VALUES (1, 'admin', 'VGZA5Tm7WBNvKFnmwKQ1mbh4e5ua8S/MjI6nqtkOEFE=', '1bec56d164fed8e74af5a0d86065030c754bc2b1a7eb4012c73c0e748230ba2f4e8c7edc35a684f842b57adef7bd717b01977d9143ada1796b18457a6ffae80a', '957149934@qq.com', 0);
